@@ -14,7 +14,7 @@ class AuthController extends Controller
             "last_name" => "required",
             "email_address" => "required|email|unique:users,email_address",
             "username" => "required|unique:users,username",
-            "profile_pic" => "nullable|image",
+            "profile_picture" => "nullable|image",
             "password" => "required|confirmed"
         ]);
 
@@ -23,7 +23,7 @@ class AuthController extends Controller
             "last_name" => $fields["last_name"],
             "email_address" => $fields["email_address"],
             "username" => $fields["username"],
-            "profile_pic" => $fields["profile_pic"],
+            "profile_picture" => $fields["profile_picture"],
             "password" => Hash::make($fields["password"])
         ]);
 

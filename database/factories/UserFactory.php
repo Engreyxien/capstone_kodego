@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'last_name' => fake()->lastname(),
             'email_address' => fake()->unique()->safeEmail(),
             'username' => fake()->userName(),
-            'profile_pic' => null,
+            'profile_picture' => null,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'created_at' => $date,
