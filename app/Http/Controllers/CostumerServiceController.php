@@ -12,4 +12,10 @@ class CostumerServiceController extends Controller
         $costumerServices = CostumerService::all();
         return response()->json($costumerServices);
     }
+
+    public function show(CostumerService $costumerService)
+    {
+        return response()->json($costumerService);
+    }
+    
 }

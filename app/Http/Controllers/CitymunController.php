@@ -12,4 +12,10 @@ class CitymunController extends Controller
         $citymuns = Citymun::all();
         return response()->json($citymuns);
     }
+
+    public function show(Citymun $citymun)
+    {
+        return response()->json($citymun);
+    }
+
 }
