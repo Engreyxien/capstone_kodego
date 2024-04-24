@@ -21,17 +21,17 @@ class CustomerService extends Model
         'accommodation_id'
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function tour()
+    public function tour(): BelongsTo
     {
         return $this->belongsTo(Tour::class);
     }
 
-    public function accommodation()
+    public function accommodation(): BelongsTo
     {
         return $this->belongsTo(Accommodation::class);
     }

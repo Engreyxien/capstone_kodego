@@ -26,17 +26,17 @@ class Accommodation extends Model
         'user_id'
     ];
 
-    public function destination()
-    {
+    public function destination(): BelongsTo
+ {
         return $this->belongsTo(Destination::class);
     }
 
-    public function citymun()
+    public function citymun(): BelongsTo
     {
         return $this->belongsTo(Citymun::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

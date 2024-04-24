@@ -21,12 +21,12 @@ class Tour extends Model
         'user_id',
     ];
 
-    public function Country()
+    public function Country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -20,12 +20,12 @@ class Transportation extends Model
         'user_id'
     ];
 
-    public function tour()
+    public function tour(): BelongsTo
     {
         return $this->belongsTo(Tour::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

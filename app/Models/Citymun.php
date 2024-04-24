@@ -20,7 +20,7 @@ class Citymun extends Model
         'country_id'
     ];
 
-    public function Country()
+    public function Country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }
