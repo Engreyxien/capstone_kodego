@@ -68,6 +68,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Tours
     Route::get("/tours", [Controller::class, "getTours"]);
     Route::get("/tour/{id}", [Controller::class, "getTour"]);
+    Route::get("/tour/destination/{id}", [Controller::class, "getToursByDestination"]);
+    Route::get("/tour/user/{id}", [Controller::class, "getToursByUser"]);
     Route::post("/tour", [Controller::class, "setTour"]); 
     Route::put("/tour/{id}", [Controller::class, "updateTour"]);
     Route::delete("/tour/{id}", [Controller::class, "deleteTour"]);

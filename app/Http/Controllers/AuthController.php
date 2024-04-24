@@ -12,15 +12,18 @@ class AuthController extends Controller
         $fields = $request->validate([
             "first_name" => "required",
             "last_name" => "required",
-            "email_address" => "required|email|unique:users,email",
+            "email_address" => "required|email|unique:users,email_",
             "username" => "required|unique:users,username",
             "profile_pic" => "nullable|image",
             "password" => "required|confirmed"
         ]);
 
         $user = User::create([
-            "username" => $fields["username"],
+            "first_name" => $fields["first_name"],
+            "last_name" => $fields["last_name"],
             "email_address" => $fields["email_address"],
+            "username" => $fields["username"],
+            "profile_pic" => $fields["profile_pic"],
             "password" => Hash::make($fields["password"])
         ]);
 

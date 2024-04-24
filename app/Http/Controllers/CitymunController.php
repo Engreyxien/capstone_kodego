@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Citymun;
+use App\Http\Resources\CitymunResource;
 
 class CitymunController extends Controller
 {

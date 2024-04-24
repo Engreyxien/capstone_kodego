@@ -3,32 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
-    public function getUsers(Request $request)
-    {
-        $users = User::all();
-        return response()->json($users);
+    public function getUser($id) {
+        $user = new UserResource(User::find($id));
+        return response()->json($user, 200, [], JSON_PRETTY_PRINT);
     }
 
-    public function show(User $user)
-    {
-        return response()->json($user);
-    }
+    public function updateProfile(Request $request) {
+        $user = User::find(auth()->user()->id);
 
-    public function update(Request $request, User $user)
-    {
+        if (!$user) {
+            return response()->json([
+                "message" => "User does not exist"
+            ], 404);
+        }
+
         $fields = $request->validate([
-            "username" => "required",
+            "first_name" => "required",
+            "last_name" => "required",
             "email_address" => "required|email",
-        ]);
-    }
-    public function store(Request $request)
-    {
-        $fields = $request->validate([
             "username" => "required",
-            "email_address" => "required|email",
+            "profile_picture" => "nullable"
         ]);
+
+        $user->first_name = $fields["first_name"];
+        $user->last_name = $fields["last_name"];
+        $user->email_address = $fields["email_address"];
+        $user->username = $fields["username"];
+        $user->profile_picture = $fields["profile_picture"];
+        $user->save();
+
+        return response()->json([
+            "message" => "Profile has been updated",
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 }
