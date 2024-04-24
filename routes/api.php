@@ -95,8 +95,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Upload
     Route::post("/upload-image", [UploadController::class, "upload"]);
 
-
+    Route::post("/profile", [UserController::class, "updateProfile"]);
+    
     Route::post("/logout", [AuthController::class, "logout"]);
 
-    Route::post("/profile", [UserController::class, "updateProfile"]);
 });
