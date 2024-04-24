@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CostumerService;
+use App\Http\Resources\CostumerServiceResource;
 
 class CostumerServiceController extends Controller
 {
@@ -17,5 +18,5 @@ class CostumerServiceController extends Controller
     {
         return response()->json($costumerService);
     }
-    
+
 }

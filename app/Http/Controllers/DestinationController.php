@@ -8,6 +8,7 @@ use App\Http\Resources\DestinationResource;
 
 class DestinationController extends Controller
 {
+
     function getDestinations(Request $request) {$destinations = Destination::where("user_id", auth()->id);
         return response()->json($destinations, 200, [], JSON_PRETTY_PRINT);
     }
