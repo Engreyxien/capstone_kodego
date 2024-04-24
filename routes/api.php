@@ -6,6 +6,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AccommodationController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\TransportationController;
+use App\Http\Controllers\TourController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CustomerServiceController;
+use App\Http\Controllers\CitymunController;
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\LanguageController;
 
 
 //Authentication
@@ -26,6 +35,45 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::delete("/destination/{id}", [DestinationController::class, "deleteDestination"]);
     Route::get("/destination/tour/{id}", [DestinationController::class, "getDestinationsByTour"]);
 
+    //Countries
+    Route::get("/countries", [Controller::class, "getCountries"]);
+    Route::get("/country/{id}", [Controller::class, "getCountry"]);
+    Route::post("/country", [Controller::class, "setCountry"]);
+
+    //Provinces
+    Route::get("/provinces", [Controller::class, "getProvinces"]);
+    Route::get("/province/{id}", [Controller::class, "getProvince"]);
+    Route::post("/province", [Controller::class, "setProvince"]);
+
+    //CitiesandMunicipalities
+    Route::get("/citymuns", [Controller::class, "getCityMuns"]);
+    Route::get("/citymun/{id}", [Controller::class, "getCityMun"]);
+    Route::post("/citymun", [Controller::class, "setCityMun"]);
+
+    //Languages
+    Route::get("/languages", [Controller::class, "getLanguages"]);
+    Route::get("/language/{id}", [Controller::class, "getLanguage"]);
+    Route::post("/language", [Controller::class, "setLanguage"]);
+
+    //Currencies
+    Route::get("/currencies", [Controller::class, "getCurrencies"]);
+    Route::get("/currency/{id}", [Controller::class, "getCurrency"]);
+    Route::post("/currency", [Controller::class, "setCurrency"]);
+
+    //CostumerServices
+    Route::get("/customerservices", [Controller::class, "getCustomerServices"]);
+    Route::get("/customerservice/{id}", [Controller::class, "getCustomerService"]);
+    Route::post("/customerservice", [Controller::class, "setCustomerService"]);
+
+    //Tours
+    Route::get("/tours", [Controller::class, "getTours"]);
+    Route::get("/tour/{id}", [Controller::class, "getTour"]);
+    Route::post("/tour", [Controller::class, "setTour"]);
+
+    //Transports
+    Route::get("/transportations", [Controller::class, "getTransportations"]);
+    Route::get("/transportation/{id}", [Controller::class, "getTransportation"]);
+    Route::post("/transportation", [Controller::class, "setTransportation"]);
 
     //Accommodations
     Route::get("/accommodations", [AccommodationController::class, "getAccommodations"]);
