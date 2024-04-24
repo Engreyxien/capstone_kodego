@@ -8,13 +8,21 @@ use App\Http\Resources\DestinationResource;
 
 class DestinationController extends Controller
 {
-    function getDestinations(Request $request) {$destinations = Destination::where("user_id", auth()->user()->id)->get();
-        return response()->json($destinations, 200, [], JSON_PRETTY_PRINT);
+    function getDestinations(Request $request) 
+    {
+        $userDestinations = Destination::where("user_id", auth()->user()->id)->get();
+        $allDestinations = Destination::whereNotIn('id', $userDestinations->pluck('id'))->get();
+        
+        $combinedDestinations = $userDestinations->merge($allDestinations);
+        
+        return response()->json($combinedDestinations, 200, [], JSON_PRETTY_PRINT);
     }
+    
     function getDestination($id){
         $destination = Destination::where("id", $id)->where("user_id", auth()->id())->first();
         return response()->json($destination, 200, [], JSON_PRETTY_PRINT);
     }
+
     
     function setDestination(Request $request) {
         $fields = $request->validate([

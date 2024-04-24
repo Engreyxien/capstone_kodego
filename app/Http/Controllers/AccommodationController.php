@@ -8,9 +8,14 @@ use App\Http\Resources\AccommodationResource;
 
 class AccommodationController extends Controller
 {
-    function getAccommodations(Request $request) {
-        $accommodations = Accommodation::where("user_id", auth()->user()->id)->get();
-        return response()->json($accommodations, 200, [], JSON_PRETTY_PRINT);
+    function getAccommodations(Request $request) 
+    {
+        $userAccommodations = Accommodation::where("user_id", auth()->user()->id)->get();
+        $allAccommodations = Accommodation::whereNotIn('id', $userAccommodations->pluck('id'))->get();
+        
+        $combinedAccommodations = $userAccommodations->merge($allAccommodations);
+        
+        return response()->json($combinedAccommodations, 200, [], JSON_PRETTY_PRINT);
     }
     function getAccommodation($id){
         $accommodation = Accommodation("id", $id)->first();
