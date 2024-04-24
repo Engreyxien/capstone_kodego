@@ -6,10 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Destination;
 use App\Models\Accommodation;
 use App\Models\Transportation;
@@ -75,5 +76,17 @@ class User extends Authenticatable
 
         public function Country(): HasOne {
             return $this->hasOne(Country::class);
+        }
+
+        public function Languages(): HasMany {
+            return $this->hasMany(Language::class);
+        }
+
+        public function Currency(): HasOne {
+            return $this->hasOne(Currency::class);
+        }
+
+        public function CustomerServices(): HasMany {
+            return $this->hasMany(CustomerService::class);
         }
     }
