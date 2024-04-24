@@ -8,7 +8,8 @@ use App\Http\Resources\AccommodationResource;
 
 class AccommodationController extends Controller
 {
-    function getAccommodations(Request $request) {$accommodations = Accommodation::where("user_id", auth()->id);
+    function getAccommodations(Request $request) {
+        $accommodations = Accommodation::where("user_id", auth()->user()->id)->get();
         return response()->json($accommodations, 200, [], JSON_PRETTY_PRINT);
     }
     function getAccommodation($id){
