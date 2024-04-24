@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Tour;
 use App\Models\Accommodation;
 
-class CostumerService extends Model
+class CustomerService extends Model
 {
     use HasFactory;
 

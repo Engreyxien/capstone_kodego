@@ -61,10 +61,10 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/currency/{id}", [CurrencyController::class, "getCurrency"]);
     Route::post("/currency", [CurrencyController::class, "setCurrency"]);
 
-    //CostumerServices
-    Route::get("/customerservices", [CostumerServiceController::class, "getCustomerServices"]);
-    Route::get("/customerservice/{id}", [CostumerServiceController::class, "getCustomerService"]);
-    Route::post("/customerservice", [CostumerServiceController::class, "setCustomerService"]);
+    //CustomerServices
+    Route::get("/customerservices", [CustomerServiceController::class, "getCustomerServices"]);
+    Route::get("/customerservice/{id}", [CustomerServiceController::class, "getCustomerService"]);
+    Route::post("/customerservice", [CustomerServiceController::class, "setCustomerService"]);
 
     //Tours
     Route::get("/tours", [TourController::class, "getTours"]);

@@ -22,9 +22,9 @@ class CostumerServiceFactory extends Factory
         return [
             'cs_name' => fake()->name(),
             'cs_description' => fake()->realText(200, 2),
-            'user_id' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 5),
             'tour_id' => fake()->numberBetween(1, 10),
-            'accommodation_id' => fake()->numberBetween(1, 10),
+            'accommodation_id' => fake()->numberBetween(1, 8),
             'created_at' => $date,
             'updated_at' => $date, 
         ];
