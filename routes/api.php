@@ -95,4 +95,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::post("/upload", [UploadController::class, "uploadImage"]);
     Route::post("/logout", [AuthController::class, "logout"]);
 
+    Route::post("/profile", [UserController::class, "updateProfile"]);
+
+    //Logout
+    Route::post("/logout", [AuthController::class, "logout"]);
 });
