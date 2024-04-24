@@ -68,12 +68,16 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Tours
     Route::get("/tours", [Controller::class, "getTours"]);
     Route::get("/tour/{id}", [Controller::class, "getTour"]);
-    Route::post("/tour", [Controller::class, "setTour"]);
+    Route::post("/tour", [Controller::class, "setTour"]); 
+    Route::put("/tour/{id}", [Controller::class, "updateTour"]);
+    Route::delete("/tour/{id}", [Controller::class, "deleteTour"]);
 
     //Transports
     Route::get("/transportations", [Controller::class, "getTransportations"]);
     Route::get("/transportation/{id}", [Controller::class, "getTransportation"]);
     Route::post("/transportation", [Controller::class, "setTransportation"]);
+    Route::put("/transportation/{id}", [Controller::class, "updateTransportation"]);
+    Route::delete("/transportation/{id}", [Controller::class, "deleteTransportation"]);
 
     //Accommodations
     Route::get("/accommodations", [AccommodationController::class, "getAccommodations"]);
