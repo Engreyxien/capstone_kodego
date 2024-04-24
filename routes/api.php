@@ -22,8 +22,8 @@ Route::post("/register", [AuthController::class, "register"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 //User
-Route::get("/user", [AuthController::class, "getusers"]);
-Route::get("/user/{id}", [AuthController::class, "getuser"]);
+Route::get("/user", [UserController::class, "getusers"]);
+Route::get("/user/{id}", [UserController::class, "getuser"]);
 
 //Test Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function () {
