@@ -27,7 +27,7 @@ class AuthController extends Controller
             "password" => Hash::make($fields["password"])
         ]);
 
-        $token = $user->createToken("secret")->plainTextToken;
+        $token = $user->createToken(env("AUTH_SECRET", "secret"))->plainTextToken;
 
         return response()->json([
             "message" => "User has been registered",
@@ -51,7 +51,7 @@ class AuthController extends Controller
             ], 404, [], JSON_PRETTY_PRINT);
         }
 
-        $token = $user->createToken("secret")->plainTextToken;
+        $token = $user->createToken(env("AUTH_SECRET", "secret"))->plainTextToken;
 
         return response()->json([
             "message" => "Logged in successfully",
@@ -60,7 +60,7 @@ class AuthController extends Controller
         ], 200, [], JSON_PRETTY_PRINT);
     }
 
-    function logout() {
+    public function logout() {
         auth()->user()->tokens()->delete();
 
         return response()->json([
