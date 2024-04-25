@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destinations', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->text('destination_name', length: 50);
-            $table->text('destination_description');
-            $table->string('destination_image', length: 50)->nullable();
-            $table->unsignedBigInteger('tour_id');
-            $table->foreign('tour_id')->references('id')->on('tours');
+            $table->date("check_in");
+            $table->date("check_out");
+            $table->integer("number_of_guests");
+            $table->unsignedBigInteger('destination_id');
+            $table->foreign('destination_id')->references('id')->on('destinations');
+            $table->unsignedBigInteger('accommodation_id');
+            $table->foreign('accommodation_id')->references('id')->on('accommodations');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destinations');
+        Schema::dropIfExists('bookings');
     }
 };

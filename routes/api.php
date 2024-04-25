@@ -16,6 +16,7 @@ use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -65,6 +66,15 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/customerservices", [CustomerServiceController::class, "getCustomerServices"]);
     Route::get("/customerservice/{id}", [CustomerServiceController::class, "getCustomerService"]);
     Route::post("/customerservice", [CustomerServiceController::class, "setCustomerService"]);
+
+    //Bookings
+    Route::get("/bookings", [BookingController::class, "getBookings"]);
+    Route::get("/booking/{id}", [BookingController::class, "getBooking"]);
+    Route::post("/booking", [BookingController::class, "setBooking"]);
+    Route::put("/booking/{id}", [BookingController::class, "updateBooking"]);
+    Route::delete("/booking/{id}", [BookingController::class, "deleteBooking"]);
+    Route::get("/booking/user/{id}", [BookingController::class, "getBookingsByUser"]);
+    Route::get("/booking/destination/accommodation/user/{id}", [BookingController::class, "getBookingsByUserAndDestinationAndAccommodation"]);
 
     //Tours
     Route::get("/tours", [TourController::class, "getTours"]);
