@@ -60,6 +60,8 @@ class BookingController extends Controller
         return response()->json([
             "message" => "Booking has been updated successfully",
         ]);
+
+        
     }
 
 }
