@@ -10,7 +10,7 @@ class AccommodationController extends Controller
 {
     function getAccommodations(Request $request) 
     {
-        $userAccommodations = Accommodation::where("user_id", auth()->user()->id)->get();
+        $userAccommodations = Accommodation::where("user_id", null)->get();
         $allAccommodations = Accommodation::whereNotIn('id', $userAccommodations->pluck('id'))->get();
         
         $combinedAccommodations = $userAccommodations->merge($allAccommodations);
@@ -18,7 +18,7 @@ class AccommodationController extends Controller
         return response()->json($combinedAccommodations, 200, [], JSON_PRETTY_PRINT);
     }
     function getAccommodation($id){
-        $accommodation = Accommodation("id", $id)->first();
+        $accommodation = Accommodation::wehre("id", $id)->where("user_id", null)->first();
         return response()->json($accommodation, 200, [], JSON_PRETTY_PRINT);
     }
 
