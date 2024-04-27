@@ -34,6 +34,10 @@ Route::group([], function() {
 //Destinations
     Route::get("/destinations", [DestinationController::class, "getDestinations"]);
     Route::get("/destination/{id}", [DestinationController::class, "getDestination"]);
+
+//Countries
+    Route::get("/countries", [CountryController::class, "getCountries"]);
+    Route::get("/country/{id}", [CountryController::class, "getCountry"]);
 });
 
 //Test Protected Routes
