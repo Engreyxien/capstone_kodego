@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,7 +19,7 @@ class DestinationController extends Controller
     }
     
     function getDestination($id){
-        $destination = Destination::where("id", $id)->first(); // or any default value
+        $destination = Destination::where("id", $id)->where("user_id", null)->first(); 
         return response()->json($destination, 200, [], JSON_PRETTY_PRINT);
     }
 
@@ -36,7 +38,7 @@ class DestinationController extends Controller
             "destination_description" => $fields["destination_description"],
             "destination_image" => $fields["destination_image"],
             "tour_id" => $fields["tour_id"],
-            "user_id" => $fields["user_id"] // or any default value
+            "user_id" => $fields["user_id"]
         ]);
 
         return response()->json([
@@ -46,7 +48,7 @@ class DestinationController extends Controller
     }
     
     function updateDestination(Request $request, $id) {
-        $destination = Destination::where("id", $id)->first(); // or any default value
+        $destination = Destination::where("id", $id)->first();
 
         if (!$destination) {
             return response()->json([
@@ -66,7 +68,7 @@ class DestinationController extends Controller
         $destination->description = $fields["destination_description"];
         $destination->image = $fields["destination_image"];
         $destination->tour_id = $fields["tour_id"];
-        $destination->user_id = $fields["user_id"]; // or any default value
+        $destination->user_id = $fields["user_id"];
         $destination->save();
 
         return response()->json([
@@ -76,8 +78,7 @@ class DestinationController extends Controller
     }
     
     function deleteTask($id) {
-        $destination = Destination::where("id", $id)->first(); // or any default value
-
+        $destination = Destination::where("id", $id)->first();
         if (!$destination) {
             return response()->json([
                 "message" => "Destination does not exist"
@@ -90,3 +91,4 @@ class DestinationController extends Controller
         ], 200, [], JSON_PRETTY_PRINT);
     }
 }
+

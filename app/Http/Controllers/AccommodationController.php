@@ -18,7 +18,7 @@ class AccommodationController extends Controller
         return response()->json($combinedAccommodations, 200, [], JSON_PRETTY_PRINT);
     }
     function getAccommodation($id){
-        $accommodation = Accommodation::wehre("id", $id)->where("user_id", null)->first();
+        $accommodation = Accommodation::where("id", $id)->where("user_id", null)->first();
         return response()->json($accommodation, 200, [], JSON_PRETTY_PRINT);
     }
 

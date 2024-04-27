@@ -27,15 +27,24 @@ Route::post("/login", [AuthController::class, "login"]);
 Route::get("/user", [UserController::class, "getusers"]);
 Route::get("/user/{id}", [UserController::class, "getuser"]);
 
+Route::group([], function() {
+    Route::get("/accommodations", [AccommodationController::class, "getAccommodations"]);
+    Route::get("/accommodation/{id}", [AccommodationController::class, "getAccommodation"]);
+
+//Destinations
+    Route::get("/destinations", [DestinationController::class, "getDestinations"]);
+    Route::get("/destination/{id}", [DestinationController::class, "getDestination"]);
+});
+
 //Test Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Destinations
-    Route::get("/destinations", [DestinationController::class, "getDestinations"]);
-    Route::get("/destination/{id}", [DestinationController::class, "getDestination"]);
     Route::post("/destination", [DestinationController::class, "setDestination"]);
-    Route::put("/destination/{id}", [DestinationController::class, "updateDestination"]);
-    Route::delete("/destination/{id}", [DestinationController::class, "deleteDestination"]);
+    Route::put("/destination/user/{id}", [DestinationController::class, "updateDestination"]);
+    Route::delete("/destination/user/{id}", [DestinationController::class, "deleteDestination"]);
+    Route::get("/destination/user/{id}", [DestinationController::class, "getDestinationsByUser"]);
     Route::get("/destination/tour/{id}", [DestinationController::class, "getDestinationsByTour"]);
+    Route::get("/destination/accommodation/{id}", [DestinationController::class, "getDestinationsByAccommodation"]);
 
     //Countries
     Route::get("/countries", [CountryController::class, "getCountries"]);
@@ -93,11 +102,9 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::delete("/transportation/{id}", [TransportationController::class, "deleteTransportation"]);
 
     //Accommodations
-    Route::get("/accommodations", [AccommodationController::class, "getAccommodations"]);
-    Route::get("/accommodation/{id}", [AccommodationController::class, "getAccommodation"]);
     Route::post("/accommodation", [AccommodationController::class, "setAccommodation"]);
-    Route::put("/accommodation/{id}", [AccommodationController::class, "updateAccommodation"]);
-    Route::delete("/accommodation/{id}", [AccommodationController::class, "deleteAccommodation"]);
+    Route::put("/accommodation/user/{id}", [AccommodationController::class, "updateAccommodation"]);
+    Route::delete("/accommodation/user/{id}", [AccommodationController::class, "deleteAccommodation"]);
     Route::get("/accommodation/destination/{id}", [AccommodationController::class, "getAccommodationsByDestination"]);
     Route::get("/accommodation/user/{id}", [AccommodationController::class, "getAccommodationsByUser"]);
     Route::get("/accommodation/tour/{id}", [AccommodationController::class, "getAccommodationsByTour"]);
