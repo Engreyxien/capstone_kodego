@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date("check_out");
             $table->integer("number_of_guests");
             $table->unsignedBigInteger('destination_id');
+            $table->unsignedBigInteger('tour_id');
+            $table->foreign('tour_id')->references('id')->on('tours');
             $table->foreign('destination_id')->references('id')->on('destinations');
             $table->unsignedBigInteger('accommodation_id');
             $table->foreign('accommodation_id')->references('id')->on('accommodations');
