@@ -28,6 +28,7 @@ Route::get("/user", [UserController::class, "getusers"]);
 Route::get("/user/{id}", [UserController::class, "getuser"]);
 
 Route::group([], function() {
+//Accommodations
     Route::get("/accommodations", [AccommodationController::class, "getAccommodations"]);
     Route::get("/accommodation/{id}", [AccommodationController::class, "getAccommodation"]);
 
@@ -38,6 +39,14 @@ Route::group([], function() {
 //Countries
     Route::get("/countries", [CountryController::class, "getCountries"]);
     Route::get("/country/{id}", [CountryController::class, "getCountry"]);
+
+//Languages
+    Route::get("/languages", [LanguageController::class, "getLanguages"]);
+    Route::get("/language/{id}", [LanguageController::class, "getLanguage"]);
+
+//Currencies
+    Route::get("/currencies", [CurrencyController::class, "getCurrencies"]);
+    Route::get("/currency/{id}", [CurrencyController::class, "getCurrency"]);
 });
 
 //Test Protected Routes
@@ -51,9 +60,10 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/destination/accommodation/{id}", [DestinationController::class, "getDestinationsByAccommodation"]);
 
     //Countries
-    Route::get("/countries", [CountryController::class, "getCountries"]);
-    Route::get("/country/{id}", [CountryController::class, "getCountry"]);
     Route::post("/country", [CountryController::class, "setCountry"]);
+    Route::put("/country/{id}", [CountryController::class, "updateCountry"]);
+    Route::delete("/country/{id}", [CountryController::class, "deleteCountry"]);
+    Route::get("/country/user/ {id}", [CountryController::class, "getCountriesByUser"]);
 
     //Provinces
     Route::get("/provinces", [ProvinceController::class, "getProvinces"]);
@@ -66,14 +76,14 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::post("/citymun", [CitymunController::class, "setCityMun"]);
 
     //Languages
-    Route::get("/languages", [LanguageController::class, "getLanguages"]);
-    Route::get("/language/{id}", [LanguageController::class, "getLanguage"]);
     Route::post("/language", [LanguageController::class, "setLanguage"]);
+    Route::put("/language/user/{id}", [LanguageController::class, "updateLanguage"]);
+    Route::get("/language/user/{id}", [LanguageController::class, "getLanguagesByUser"]);
 
     //Currencies
-    Route::get("/currencies", [CurrencyController::class, "getCurrencies"]);
-    Route::get("/currency/{id}", [CurrencyController::class, "getCurrency"]);
     Route::post("/currency", [CurrencyController::class, "setCurrency"]);
+    Route::put("/currency/user/{id}", [CurrencyController::class, "updateCurrency"]);
+    Route::get("/currency/user/{id}", [CurrencyController::class, "getCurrenciesByUser"]);
 
     //CustomerServices
     Route::get("/customerservices", [CustomerServiceController::class, "getCustomerServices"]);
