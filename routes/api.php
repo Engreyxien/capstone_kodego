@@ -40,6 +40,18 @@ Route::group([], function() {
     Route::get("/countries", [CountryController::class, "getCountries"]);
     Route::get("/country/{id}", [CountryController::class, "getCountry"]);
 
+//Cities
+Route::get("/citymuns", [CitymunController::class, "getCityMuns"]);
+Route::get("/citymun/{id}", [CitymunController::class, "getCityMun"]);
+
+//Provinces
+Route::get("/provinces", [ProvinceController::class, "getProvinces"]);
+Route::get("/province/{id}", [ProvinceController::class, "getProvince"]);
+
+//Tours
+Route::get("/tours", [TourController::class, "getTours"]);
+Route::get("/tour/{id}", [TourController::class, "getTour"]);
+
 //Languages
     Route::get("/languages", [LanguageController::class, "getLanguages"]);
     Route::get("/language/{id}", [LanguageController::class, "getLanguage"]);
@@ -66,13 +78,9 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/country/user/ {id}", [CountryController::class, "getCountriesByUser"]);
 
     //Provinces
-    Route::get("/provinces", [ProvinceController::class, "getProvinces"]);
-    Route::get("/province/{id}", [ProvinceController::class, "getProvince"]);
     Route::post("/province", [ProvinceController::class, "setProvince"]);
 
     //CitiesandMunicipalities
-    Route::get("/citymuns", [CitymunController::class, "getCityMuns"]);
-    Route::get("/citymun/{id}", [CitymunController::class, "getCityMun"]);
     Route::post("/citymun", [CitymunController::class, "setCityMun"]);
 
     //Languages
@@ -100,8 +108,6 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/booking/destination/accommodation/user/{id}", [BookingController::class, "getBookingsByUserAndDestinationAndAccommodation"]);
 
     //Tours
-    Route::get("/tours", [TourController::class, "getTours"]);
-    Route::get("/tour/{id}", [TourController::class, "getTour"]);
     Route::get("/tour/destination/{id}", [TourController::class, "getToursByDestination"]);
     Route::get("/tour/user/{id}", [TourController::class, "getToursByUser"]);
     Route::post("/tour", [TourController::class, "setTour"]); 
