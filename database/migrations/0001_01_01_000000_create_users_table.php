@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name', length: 20);
             $table->string('email_address', length: 50)->unique();
             $table->string('username', length: 50)->unique();
+            $table->foreignId('country_id');
             $table->string('password');
             $table->string('profile_picture', length: 50)->nullable();
             $table->rememberToken();

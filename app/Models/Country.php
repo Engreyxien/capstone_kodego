@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\User;
 
 class Country extends Model
@@ -14,11 +14,10 @@ class Country extends Model
     protected $fillable = [
         'country_name',
         'country_description',
-        'user_id'
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function User(): HasMany
+  {
+      return $this->hasMany(User::class);
+  }
 }
