@@ -77,7 +77,7 @@ class DestinationController extends Controller
         ], 200, [], JSON_PRETTY_PRINT);
     }
     
-    function deleteTask($id) {
+    function deleteDestination($id) {
         $destination = Destination::where("id", $id)->first();
         if (!$destination) {
             return response()->json([

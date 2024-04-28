@@ -82,4 +82,20 @@ class BookingController extends Controller
             "data" => new BookingResource($booking)
         ], 200, [], JSON_PRETTY_PRINT);
     }
+    public function deleteBooking($id)
+    {
+        $booking = Booking::where("id", $id)->where("user_id", auth()->user()->id)->first();
+
+        if (!$booking) {
+            return response()->json([
+                "message" => "Booking does not exist"
+            ], 404, [], JSON_PRETTY_PRINT);
+        }
+
+        $booking->delete();
+
+        return response()->json([
+            "message" => "Booking has been deleted successfully"
+        ] , 200, [], JSON_PRETTY_PRINT);
+    }
 }
