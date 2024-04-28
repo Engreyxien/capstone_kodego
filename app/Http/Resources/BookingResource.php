@@ -25,10 +25,10 @@ class BookingResource extends JsonResource
           'check_in' => $this->check_in,
           'check_out' => $this->check_out,
           'number_of_guests' => $this->number_of_guests,
-          'tour_id' => $this->tour ? $this->tour->id : null,
-          'accommodation_id' => $this->accommodation->id,
-          'destination_id' => $this->destination ? $this->destination->id : null,
-          'user_id' => $this->user_id
+          'tour_name' => $this->tour ? $this->tour->tour_title : null,
+          'accommodation_name' => $this->accommodation->accommodation_name,
+          'destination_name' => $this->destination ? $this->destination->destination_name : null,
+          'user' => $this->user
       ];
   }
 }
