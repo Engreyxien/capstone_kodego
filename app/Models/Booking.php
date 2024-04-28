@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Accommodation;
 use App\Models\Destination;
 use App\Models\User;
+use App\Models\Tour;
 
 class Booking extends Model
 {
@@ -33,6 +34,11 @@ class Booking extends Model
         return $this->belongsTo(Destination::class);
     }
 
+    public function Tour(): BelongsTo
+    {
+        return $this->belongsTo(Tour::class);
+    }
+    
     public function User(): BelongsTo
     {
         return $this->belongsTo(User::class);

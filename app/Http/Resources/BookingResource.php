@@ -18,18 +18,18 @@ class BookingResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
-    {
-        return [
-            'id' => $this->id,
-            'check_in' => $this->check_in,
-            'check_out' => $this->check_out,
-            'number_of_guests' => $this->number_of_guests,
-            'tour_id' => $this->tour->name,
-            'accommodation_id' => $this->accommodation->type,
-            'destination_id' => $this->destination->name,
-            'user_id' => $this->user_id
-        ];
-    }
+  public function toArray(Request $request): array
+  {
+      return [
+          'id' => $this->id,
+          'check_in' => $this->check_in,
+          'check_out' => $this->check_out,
+          'number_of_guests' => $this->number_of_guests,
+          'tour_id' => $this->tour ? $this->tour->id : null,
+          'accommodation_id' => $this->accommodation->id,
+          'destination_id' => $this->destination ? $this->destination->id : null,
+          'user_id' => $this->user_id
+      ];
+  }
 }
 

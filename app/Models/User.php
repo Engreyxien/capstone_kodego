@@ -15,6 +15,7 @@ use App\Models\Destination;
 use App\Models\Accommodation;
 use App\Models\Transportation;
 use App\Models\Tour;
+use App\Models\Booking;
 
 class User extends Authenticatable
 {
@@ -85,6 +86,10 @@ class User extends Authenticatable
 
         public function Currency(): HasOne {
             return $this->hasOne(Currency::class);
+        }
+
+        public function Bookings(): HasMany {
+            return $this->hasMany(Booking::class);
         }
 
         public function CustomerServices(): HasMany {
