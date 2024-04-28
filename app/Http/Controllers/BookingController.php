@@ -59,21 +59,21 @@ class BookingController extends Controller
         }
 
        $fields = $request->validate([
-           "check_in" => "required",
-           "check_out" => "required",
-           "number_of_guests" => "required",
-           "tour_id" => "nullable",
-           "destination_id" => "required",
-           "accommodation_id" => "required",
-           "user_id" => "required"
+        "check_in" => "required",
+        "check_out" => "required",
+        "number_of_guests" => "required",
+        "tour_title" => "required", // Add validation rule for "tour_id"
+        "destination_name" => "required",
+        "accommodation_name" => "required",
+        "user_id" => "required"
        ]);
 
         $booking->check_in = $fields["check_in"];
         $booking->check_out = $fields["check_out"];
         $booking->number_of_guests = $fields["number_of_guests"];
-        $booking->tour_id = $fields["tour_id"];
-        $booking->destination_id = $fields["destination_id"];
-        $booking->accommodation_id = $fields["accommodation_id"];
+        $booking->tour_id = $fields["tour_title"];
+        $booking->destination_id = $fields["destination_name"];
+        $booking->accommodation_id = $fields["accommodation_name"];
         $booking->user_id = $fields["user_id"];
         $booking->save();
 
@@ -82,7 +82,7 @@ class BookingController extends Controller
             "data" => new BookingResource($booking)
         ], 200, [], JSON_PRETTY_PRINT);
     }
-    public function deleteBooking($id)
+    public function deleteBookings($id)
     {
         $booking = Booking::where("id", $id)->where("user_id", auth()->user()->id)->first();
 

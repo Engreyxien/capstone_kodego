@@ -19,6 +19,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingController;
 
 
+
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/login", [AuthController::class, "login"]);
 
@@ -63,17 +64,17 @@ Route::get("/tour/{id}", [TourController::class, "getTour"]);
 //Test Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Destinations
-    Route::post("/destination", [DestinationController::class, "setDestination"]);
-    Route::put("/destination/user/{id}", [DestinationController::class, "updateDestination"]);
-    Route::delete("/destination/user/{id}", [DestinationController::class, "deleteDestination"]);
+    Route::post("/destinations", [DestinationController::class, "setDestination"]);
+    Route::put("/destinations/{id}", [DestinationController::class, "updateDestination"]);
+    Route::delete("/destinations/{id}", [DestinationController::class, "deleteDestination"]);
     Route::get("/destination/user/{id}", [DestinationController::class, "getDestinationsByUser"]);
     Route::get("/destination/tour/{id}", [DestinationController::class, "getDestinationsByTour"]);
     Route::get("/destination/accommodation/{id}", [DestinationController::class, "getDestinationsByAccommodation"]);
 
     //Countries
-    Route::post("/country", [CountryController::class, "setCountry"]);
-    Route::put("/country/{id}", [CountryController::class, "updateCountry"]);
-    Route::delete("/country/{id}", [CountryController::class, "deleteCountry"]);
+    Route::post("/countries", [CountryController::class, "setCountry"]);
+    Route::put("/countries/{id}", [CountryController::class, "updateCountry"]);
+    Route::delete("/countries/{id}", [CountryController::class, "deleteCountry"]);
     Route::get("/country/user/ {id}", [CountryController::class, "getCountriesByUser"]);
 
     //Provinces
@@ -101,8 +102,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get("/bookings", [BookingController::class, "getBookings"]);
     Route::get("/booking/{id}", [BookingController::class, "getBookingbyUser"]);
     Route::post("/bookings", [BookingController::class, "setBookings"]);
-    Route::put("/booking/user/{id}", [BookingController::class, "updateBooking"]);
-    Route::delete("/booking/user/{id}", [BookingController::class, "deleteBooking"]);
+    Route::put("/bookings/{id}", [BookingController::class, "updateBooking"]);
+    Route::delete("/bookings/{id}", [BookingController::class, "deleteBooking"]);
     Route::get("/booking/destination/accommodation/tour/user/{id}", [BookingController::class, "getBookingsByUserAndDestinationAndAccommodation"]);
 
     //Tours
@@ -120,9 +121,9 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::delete("/transportation/{id}", [TransportationController::class, "deleteTransportation"]);
 
     //Accommodations
-    Route::post("/accommodation", [AccommodationController::class, "setAccommodation"]);
-    Route::put("/accommodation/user/{id}", [AccommodationController::class, "updateAccommodation"]);
-    Route::delete("/accommodation/user/{id}", [AccommodationController::class, "deleteAccommodation"]);
+    Route::post("/accommodations", [AccommodationController::class, "setAccommodation"]);
+    Route::put("/accommodations/{id}", [AccommodationController::class, "updateAccommodation"]);
+    Route::delete("/accommodations/{id}", [AccommodationController::class, "deleteAccommodation"]);
     Route::get("/accommodation/destination/{id}", [AccommodationController::class, "getAccommodationsByDestination"]);
     Route::get("/accommodation/user/{id}", [AccommodationController::class, "getAccommodationsByUser"]);
     Route::get("/accommodation/tour/{id}", [AccommodationController::class, "getAccommodationsByTour"]);

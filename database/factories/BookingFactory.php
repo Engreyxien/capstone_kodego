@@ -24,7 +24,7 @@ class BookingFactory extends Factory
             'tour_id' => $this->faker->numberBetween(1, 10),
             'accommodation_id' => $this->faker->numberBetween(1, 8),
             'destination_id' => $this->faker->numberBetween(1, 50),
-            'user_id' => $this->faker->numberBetween(1, 24),
+            'user_id' => $this->faker->numberBetween(1, 28),
         ];
     }
 }
