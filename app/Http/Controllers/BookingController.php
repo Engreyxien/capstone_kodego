@@ -14,11 +14,11 @@ class BookingController extends Controller
         return BookingResource::collection($userBookings);
     }
 
-    public function getBooking($id)
-    {
-        $booking = auth()->user()->bookings->find($id);
-        return new BookingResource($booking);
-    }
+   public function getBookingsbyUser($id)
+   {
+       $booking = auth()->user()->booking->find($id);
+       return new BookingResource($booking);
+   }
 
     public function setBooking(Request $request)
     {
