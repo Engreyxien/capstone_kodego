@@ -4,6 +4,12 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Booking;
+use App\Models\Accommodation;
+use App\Models\Destination;
+use App\Models\User;
+use App\Models\Tour;
+use App\Http\Resources\AccommodationResource;
 
 class BookingResource extends JsonResource
 {
@@ -19,10 +25,11 @@ class BookingResource extends JsonResource
             'check_in' => $this->check_in,
             'check_out' => $this->check_out,
             'number_of_guests' => $this->number_of_guests,
-            'tour_name' => $this->tour_name,
-            'accommodation_type' => $this->accommodation_type,
-            'destination_name' => $this->destination_name,
+            'tour_id' => $this->tour->name,
+            'accommodation_id' => $this->accommodation->type,
+            'destination_id' => $this->destination->name,
             'user_id' => $this->user_id
         ];
     }
 }
+
