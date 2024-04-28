@@ -26,28 +26,28 @@ class BookingController extends Controller
             "check_in" => "required",
             "check_out" => "required",
             "number_of_guests" => "required",
-            "tour_name" => "required",
+            "tour_title" => "required", // Add validation rule for "tour_id"
             "destination_name" => "required",
             "accommodation_name" => "required",
             "user_id" => "required"
         ]);
-
+    
+    
         $booking = Booking::create([
             "check_in" => $fields["check_in"],
             "check_out" => $fields["check_out"],
             "number_of_guests" => $fields["number_of_guests"],
-            "tour_id" => $fields["tour_name"],
+            "tour_id" => $fields["tour_title"],
             "destination_id" => $fields["destination_name"],
             "accommodation_id" => $fields["accommodation_name"],
             "user_id" => $fields["user_id"]
         ]);
-
+    
         return response()->json([
             "message" => "Booking has been added successfully",
             "data" => new BookingResource($booking)
         ], 201, [], JSON_PRETTY_PRINT);
     }
-
     public function updateBooking(Request $request, $id)
     {
         $booking = Booking::where("id", $id)->where("user_id", auth()->user()->id)->first();
@@ -58,15 +58,15 @@ class BookingController extends Controller
             ], 404, [], JSON_PRETTY_PRINT);
         }
 
-        $fields = $request->validate([
-            "check_in" => "required",
-            "check_out" => "required",
-            "number_of_guests" => "required",
-            "tour_id" => "required",
-            "destination_id" => "required",
-            "accommodation_id" => "required",
-            "user_id" => "required"
-        ]);
+       $fields = $request->validate([
+           "check_in" => "required",
+           "check_out" => "required",
+           "number_of_guests" => "required",
+           "tour_id" => "nullable",
+           "destination_id" => "required",
+           "accommodation_id" => "required",
+           "user_id" => "required"
+       ]);
 
         $booking->check_in = $fields["check_in"];
         $booking->check_out = $fields["check_out"];
