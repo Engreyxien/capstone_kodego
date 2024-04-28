@@ -16,12 +16,12 @@ return new class extends Migration
             $table->date("check_in");
             $table->date("check_out");
             $table->integer("number_of_guests");
-            $table->string("destination_name");
-            $table->foreign("destination_name")->references("destination_name")->on('destinations');
-            $table->string("tour_name");
-            $table->foreign("tour_name")->references("tour_name")->on('tours');
-            $table->string("accommodation_name");
-            $table->foreign("accommodation_name")->references("accommodation_name")->on('accommodations');
+            $table->unsignedBigInteger('destination_id');
+            $table->foreign('destination_id')->references('id')->on('destinations');
+            $table->unsignedBigInteger('tour_id')->nullable();
+            $table->foreign('tour_id')->references('id')->on('tours');
+            $table->unsignedBigInteger('accommodation_id')->nullable();
+            $table->foreign('accommodation_id')->references('id')->on('accommodations');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
@@ -33,6 +33,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('bookings', function (Blueprint $table) {
+            $table->dropForeign(['destination_id']);
+            $table->dropForeign(['tour_id']);
+            $table->dropForeign(['accommodation_id']);
+            $table->dropForeign(['user_id']);
+        });
     }
 };

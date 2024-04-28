@@ -10,6 +10,9 @@ use App\Models\Destination;
 use App\Models\User;
 use App\Models\Tour;
 use App\Http\Resources\AccommodationResource;
+use App\Http\Resources\DestinationResource;
+use App\Http\Resources\TourResource;
+use App\Http\Resources\UserResource;
 
 class BookingResource extends JsonResource
 {

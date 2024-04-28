@@ -18,9 +18,9 @@ class Booking extends Model
         "check_in",
         "check_out",
         "number_of_guests",
-        "tour_name",
-        "accommodation_name",
-        "destination_name",
+        "tour_id",
+        "accommodation_id",
+        "destination_id",
         "user_id",
     ];
 
