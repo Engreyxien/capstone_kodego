@@ -39,16 +39,21 @@ class AuthController extends Controller
     function login(Request $request) {
         $fields = $request->validate([
             "username" => "required",
-            "email_address" => "required|email",
             "password" => "required"
         ]);
 
-        $user = User::where("email_address", $fields["email_address"])->first();
+        $user = User::where("username", $fields["username"])->first();
 
         if (!$user) {
             return response()->json([
-                "message" => "Email does not exist"
+                "message" => "Username does not exist"
             ], 404, [], JSON_PRETTY_PRINT);
+        }
+        
+        if (!Hash::check($fields["password"], $user->password)) {
+            return response()->json([
+                "message" => "Password is incorrect"
+            ], 401, [], JSON_PRETTY_PRINT);
         }
 
         $token = $user->createToken(env("AUTH_SECRET", "secret"))->plainTextToken;
