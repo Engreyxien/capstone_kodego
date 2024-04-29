@@ -27,7 +27,7 @@ class DestinationController extends Controller
     function setDestination(Request $request) {
         $fields = $request->validate([
             "destination_name" => "required",
-            "destination_description" => "required",
+            "destination_description" => "",
             "destination_image" => "nullable|image",
             "tour_id" => "required",
             "user_id" => "required"
@@ -57,8 +57,8 @@ class DestinationController extends Controller
         }
 
         $fields = $request->validate([
-            "destination_name" => "required",
-            "destination_description" => "required",
+            "destination_name" => "nullable",
+            "destination_description" => "nullables",
             "destination_image" => "nullable",
             "tour_id" => "nullable",
             "user_id" => "nullable"
