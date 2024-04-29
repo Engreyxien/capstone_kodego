@@ -26,10 +26,10 @@ class BookingController extends Controller
             "check_in" => "required",
             "check_out" => "required",
             "number_of_guests" => "required",
-            "tour_title" => "required", // Add validation rule for "tour_id"
+            "tour_title" => "nullable", // Add validation rule for "tour_id"
             "destination_name" => "required",
-            "accommodation_name" => "required",
-            "user_id" => "required"
+            "accommodation_name" => "nullable",
+            "user_id" => "nullable"
         ]);
     
     
