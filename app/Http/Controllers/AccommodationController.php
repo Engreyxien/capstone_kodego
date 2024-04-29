@@ -65,19 +65,19 @@ class AccommodationController extends Controller
 
         $fields = $request->validate([
             "accommodation_name" => "required",
-            "accommodation_description" => "required",
-            "accommodation-type" => "required",
-            "accommodation_address" => "required",
-            "accommodation_price" => "required",
+            "accommodation_description" => "nullable",
+            "accommodation_type" => "required",
+            "accommodation_address" => "nullable",
+            "accommodation_price" => "nullable",
             "accommodation_image" => "nullable|image",
             "contact_info" => "required",
-            "destination_id" => "required",
-            "citymun_id" => "required",
-            "user_id" => "required"
+            "destination_id" => "nullable",
+            "citymun_id" => "nullable",
+            "user_id" => "nullable"
         ]);
 
-        $accommodation->name = $fields["accommodation_name"];
-        $accommodation->description = $fields["accommodation_description"];
+        $accommodation->accommodation_name = $fields["accommodation_name"];
+        $accommodation->accommodation_description = $fields["accommodation_description"];
         $accommodation->type = $fields["accommodation_type"];
         $accommodation->address = $fields["accommodation_address"];
         $accommodation->price = $fields["accommodation_price"];

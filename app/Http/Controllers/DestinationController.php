@@ -58,7 +58,7 @@ class DestinationController extends Controller
 
         $fields = $request->validate([
             "destination_name" => "nullable",
-            "destination_description" => "nullables",
+            "destination_description" => "nullable",
             "destination_image" => "nullable",
             "tour_id" => "nullable",
             "user_id" => "nullable"
