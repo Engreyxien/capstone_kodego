@@ -15,9 +15,9 @@ class Destination extends Model
     protected $fillable = [
         'destination_name',
         'destination_description',
-        'destination_image',
-        'tour_id',
-        'user_id'
+        // 'destination_image',
+        // 'tour_id',
+        // 'user_id'
     ];
 
     public function tour(): BelongsTo

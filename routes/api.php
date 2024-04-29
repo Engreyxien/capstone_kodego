@@ -100,7 +100,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
 
     //Bookings
     Route::get("/bookings", [BookingController::class, "getBookings"]);
-    Route::get("/booking/{id}", [BookingController::class, "getBookingbyUser"]);
+    Route::get("/bookings/{id}", [BookingController::class, "getBookingbyUser"]);
     Route::post("/bookings", [BookingController::class, "setBookings"]);
     Route::put("/bookings/{id}", [BookingController::class, "updateBooking"]);
     Route::delete("/bookings/{id}", [BookingController::class, "deleteBooking"]);
