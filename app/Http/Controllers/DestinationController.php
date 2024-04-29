@@ -59,16 +59,16 @@ class DestinationController extends Controller
         $fields = $request->validate([
             "destination_name" => "required",
             "destination_description" => "required",
-            "destination_image" => "nullable|image",
-            "tour_id" => "required",
-            "user_id" => "required"
+            "destination_image" => "nullable",
+            "tour_id" => "nullable",
+            "user_id" => "nullable"
         ]);
-
-        $destination->name = $fields["destination_name"];
-        $destination->description = $fields["destination_description"];
-        $destination->image = $fields["destination_image"];
-        $destination->tour_id = $fields["tour_id"];
-        $destination->user_id = $fields["user_id"];
+        
+        $destination->destination_name = $fields["destination_name"];
+        $destination->destination_description = $fields["destination_description"];
+        // $destination->destination_image = $fields["destination_image"];
+        // $destination->tour_id = $fields["tour_id"];
+        // $destination->user_id = $fields["user_id"];
         $destination->save();
 
         return response()->json([
