@@ -66,7 +66,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function () {
     //Destinations
     Route::post("/destinations", [DestinationController::class, "setDestination"]);
     Route::put("/destination/{id}", [DestinationController::class, "updateDestination"]);
-    Route::delete("/destinations/{id}", [DestinationController::class, "deleteDestination"]);
+    Route::delete("/destination/{id}", [DestinationController::class, "deleteDestination"]);
     Route::get("/destination/user/{id}", [DestinationController::class, "getDestinationsByUser"]);
     Route::get("/destination/tour/{id}", [DestinationController::class, "getDestinationsByTour"]);
     Route::get("/destination/accommodation/{id}", [DestinationController::class, "getDestinationsByAccommodation"]);
